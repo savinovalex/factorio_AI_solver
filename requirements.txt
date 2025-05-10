@@ -1,0 +1,6 @@
+numpy
+scipy
+mypy
+pytest
+pybind11
+pybind11[global]

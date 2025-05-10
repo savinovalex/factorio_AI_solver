@@ -1,23 +1,13 @@
 import sys
 import os
+import time
+
 sys.path.append(os.getcwd())
 sys.path.append(os.getcwd() + '/build')
 import numpy as np
 
 import bfs_module
 from game_env.state import State
-
-field = np.array([[0, 0, 0, 5],
-                  [5, 5, 0, 0],
-                  [0, 0, 0, 5],
-                  [0, 5, 5, 0],
-                  [0, 0, 0, 0],])
-
-legs = bfs_module.find_path_legs(field, (0, 0), (4, 3))
-state = State(field)
-state.apply_path_legs(legs)
-print(state)
-
 
 
 def test_empty():
@@ -50,6 +40,15 @@ def test_walls_reversed():
 
     assert [(4, 3, 3), (4, 2, 3), (4, 1, 3), (4, 0, 4), (3, 0, 4), (2, 0, 4), (1, 0, 4), (0, 0, 4)] == \
            bfs_module.find_path_legs(field, (4, 3), (0, 0))
+
+def tst_no_path():
+    field = np.array([[0, 5, 0, 0],
+                      [0, 0, 5, 0],
+                      [0, 0, 0, 5],
+                      [0, 0, 5, 5],
+                      [0, 0, 5, 0], ])
+
+    bfs_module.find_path_legs(field, (4, 3), (0, 0))
 
 def test_with_repr():
     field = np.array([[0, 0, 0, 5],

@@ -11,7 +11,6 @@ import bfs_module
 g_s = time.time()
 effective_time = 0
 for epoch in range(1000):
-    if epoch == 1: st = time.time()
     field = np.zeros((100, 100), dtype=np.uint8)
     p = np.random.randint(0, 99, 200)
     field[p[:100], p[100:]] = 5

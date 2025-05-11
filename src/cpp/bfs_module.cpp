@@ -55,8 +55,9 @@ py::list restore_path_legs(std::vector<std::vector<int>> &visited_from, int sour
     return path;
 }
 
-py::list find_path_legs(py::array_t<unsigned char> &field,
+py::object find_path_legs(py::array_t<unsigned char> &field,
                         py::tuple &source_point_tpl, py::tuple &target_point_tpl) {
+                        // -> py::object or Nonetype if no path
 
     if (field.ndim() != 2)
         throw std::runtime_error("Number of dimensions must be two");

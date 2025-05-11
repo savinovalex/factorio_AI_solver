@@ -41,14 +41,14 @@ def test_walls_reversed():
     assert [(4, 3, 3), (4, 2, 3), (4, 1, 3), (4, 0, 4), (3, 0, 4), (2, 0, 4), (1, 0, 4), (0, 0, 4)] == \
            bfs_module.find_path_legs(field, (4, 3), (0, 0))
 
-def tst_no_path():
+def test_no_path():
     field = np.array([[0, 5, 0, 0],
                       [0, 0, 5, 0],
                       [0, 0, 0, 5],
                       [0, 0, 5, 5],
                       [0, 0, 5, 0], ])
 
-    bfs_module.find_path_legs(field, (4, 3), (0, 0))
+    assert bfs_module.find_path_legs(field, (4, 3), (0, 0)) is None
 
 def test_with_repr():
     field = np.array([[0, 0, 0, 5],
